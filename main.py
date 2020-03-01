@@ -28,8 +28,9 @@ def loop():
         if voltage_reading > 50:
             audio_player.play()
         else:
-            timeout()
-            audio_player.pause()
+            if audio_player.get_playing_status():
+                timeout()
+                audio_player.pause()
         time.sleep(0.1)
 
 
