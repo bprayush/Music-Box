@@ -28,9 +28,13 @@ def setup():
 
 def check_button_input():
     global button_pin
+    global audio_player
 
     while True:
-        print("Button state: ", GPIO.input(button_pin))
+        button_state = GPIO.input(button_pin)
+        print("Button state: ", button_state)
+        if button_state is 1:
+            audio_player.stop()
         time.sleep(0.2)
 
 
