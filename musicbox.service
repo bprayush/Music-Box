@@ -4,6 +4,3 @@ Description=Music Box
 [Service]
 Type=simple
 ExecStart=/home/pi/Documents/Music-Box/main.py
-StandardOutput=inherit
-StandardError=inherit
-Restart=always
