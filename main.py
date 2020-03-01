@@ -6,6 +6,7 @@ from crank_handler import CrankHandler
 
 audio_player = None
 crank_handler = None
+timer = 5
 
 
 def setup():
@@ -27,9 +28,14 @@ def loop():
         if voltage_reading > 50:
             audio_player.play()
         else:
-            # audio_player.pause()
-            pass
+            timeout()
+            audio_player.pause()
         time.sleep(0.1)
+
+
+def timeout():
+    global timer
+    time.sleep(timer)
 
 
 if __name__ == '__main__':

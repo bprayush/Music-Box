@@ -16,7 +16,7 @@ class AudioPlayer:
         if not self.playing:
             if not self.paused:
                 print('play')
-                self.player.mixer.music.play()
+                self.player.mixer.music.play(loops=-1)
             else:
                 print('unpause')
                 self.player.mixer.music.unpause()
@@ -29,6 +29,7 @@ class AudioPlayer:
     def stop(self):
         self.player.mixer.music.stop()
         self.playing = False
+        self.paused = False
 
     def pause(self):
         print('pause')
