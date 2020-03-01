@@ -30,8 +30,8 @@ def check_button_input():
     global button_pin
 
     while True:
-        if GPIO.input(button_pin):
-            print("Button state: ON")
+        print("Button state: ", GPIO.input(button_pin))
+        time.sleep(0.2)
 
 
 def loop():
@@ -61,8 +61,8 @@ if __name__ == '__main__':
         loop_thread = Thread(target=loop)
         button_thread = Thread(target=check_button_input)
 
-        loop_thread.start()
         button_thread.start()
+        loop_thread.start()
     except KeyboardInterrupt:
         GPIO.cleanup()
         exit()
