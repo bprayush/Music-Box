@@ -6,7 +6,7 @@ from crank_handler import CrankHandler
 
 audio_player = None
 crank_handler = None
-timer = 5
+timer = 2
 
 
 def setup():
