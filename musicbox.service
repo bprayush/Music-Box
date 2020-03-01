@@ -2,6 +2,12 @@
 Description=Music Box
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/python3 -u main.py
+ExecStart=/home/pi/Documents/Music-Box/main.py
 WorkingDirectory=/home/pi/Documents/Music-Box
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
