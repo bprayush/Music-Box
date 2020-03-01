@@ -1,4 +1,4 @@
-import pygame
+import time
 
 from audio_player import AudioPlayer
 from threading import Thread
@@ -19,8 +19,17 @@ def setup():
 
 def loop():
     global crank_handler
+    global audio_player
     while True:
-        print(crank_handler.read())
+        voltage_reading = crank_handler.read()
+        print(voltage_reading)
+
+        if voltage_reading > 50:
+            audio_player.play()
+        else:
+            audio_player.pause()
+
+        time.sleep(0.1)
 
 
 if __name__ == '__main__':
