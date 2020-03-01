@@ -4,18 +4,34 @@ import pygame
 class AudioPlayer:
 
     def __init__(self):
-        pygame.init()
+        self.player = pygame
+        self.player.init()
         self.playing = False
+        self.paused = False
 
-    @staticmethod
-    def load_file(file_name="audio/Yellow.mp3"):
-        pygame.mixer.music.load(file_name)
+    def load_file(self, file_name="audio/Yellow.mp3"):
+        self.player.mixer.music.load(file_name)
 
     def play(self):
         if not self.playing:
-            pygame.mixer.music.play()
+            if not self.paused:
+                print('play')
+                self.player.mixer.music.play()
+            else:
+                print('unpause')
+                self.player.mixer.music.unpause()
+            self.paused = False
             self.playing = True
 
-    @staticmethod
-    def get_playing_status():
-        return pygame.mixer.music.get_busy()
+    def get_playing_status(self):
+        return self.player.mixer.music.get_busy()
+
+    def stop(self):
+        self.player.mixer.music.stop()
+        self.playing = False
+
+    def pause(self):
+        print('pause')
+        self.player.mixer.music.pause()
+        self.playing = False
+        self.paused = True
