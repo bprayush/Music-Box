@@ -9,7 +9,7 @@ class AudioPlayer:
         self.playing = False
         self.paused = False
 
-    def load_file(self, file_name="audio/Jus the way you are Music box.aac"):
+    def load_file(self, file_name="audio/Jus-the-way-you-are-Music-box.mp3"):
         self.player.mixer.music.load(file_name)
 
     def play(self):
