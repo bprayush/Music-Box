@@ -8,9 +8,16 @@ class AudioPlayer:
         self.player.init()
         self.playing = False
         self.paused = False
+        self.playerIndex = 0
+        self.playerQueue = [
+            "audio/Just the way you are- Music Box.mp3",
+            "audio/Can't help falling in love -music box.mp3",
+            "audio/Yellow -Music Box.mp3"
+        ]
 
-    def load_file(self, file_name="audio/Jus-the-way-you-are-Music-box.mp3"):
-        self.player.mixer.music.load(file_name)
+    def load_file(self):
+        audio_file = self.playerQueue[self.playerIndex]
+        self.player.mixer.music.load(audio_file)
 
     def play(self):
         if not self.playing:
@@ -22,6 +29,11 @@ class AudioPlayer:
                 self.player.mixer.music.unpause()
             self.paused = False
             self.playing = True
+
+    def next(self):
+        self.stop()
+        self.playerIndex = (self.playerIndex + 1) % 3
+        self.load_file()
 
     def get_playing_status(self):
         return self.player.mixer.music.get_busy()

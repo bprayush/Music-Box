@@ -10,16 +10,18 @@ import RPi.GPIO as GPIO
 audio_player = None
 crank_handler = None
 timer = 2
-button_pin = 18
+stop_button = 18
+next_button = 17
 
 
 def setup():
     global audio_player
     global crank_handler
-    global button_pin
+    global stop_button
 
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(stop_button, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(next_button, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     audio_player = AudioPlayer()
     audio_player.load_file()
@@ -27,14 +29,21 @@ def setup():
 
 
 def check_button_input():
-    global button_pin
+    global stop_button
+    global next_button
     global audio_player
 
     while True:
-        button_state = GPIO.input(button_pin)
-        print("Button state: ", button_state)
-        if button_state is 1:
+        stop_button_state = GPIO.input(stop_button)
+        next_button_state = GPIO.input(next_button)
+        print("Stop button state: ", stop_button_state)
+        print("Next button state: ", next_button_state)
+
+        if stop_button_state is 1:
             audio_player.stop()
+        if next_button_state is 1:
+            audio_player.next()
+
         time.sleep(0.2)
 
 
