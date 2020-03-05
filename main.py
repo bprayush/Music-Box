@@ -38,11 +38,14 @@ def check_button_input():
         next_button_state = GPIO.input(next_button)
         print("Stop button state: ", stop_button_state)
         print("Next button state: ", next_button_state)
+        print("Track name: ", audio_player.get_track_name())
 
         if stop_button_state is 1:
             audio_player.stop()
+            time.sleep(1)
         if next_button_state is 1:
             audio_player.next()
+            time.sleep(1)
 
         time.sleep(0.2)
 

@@ -48,3 +48,6 @@ class AudioPlayer:
         self.player.mixer.music.pause()
         self.playing = False
         self.paused = True
+
+    def get_track_name(self):
+        return self.playerQueue[self.playerIndex]
