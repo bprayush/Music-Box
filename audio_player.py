@@ -13,7 +13,7 @@ class AudioPlayer:
             "audio/Just the way you are- Music Box.mp3",
             "audio/Can't help falling in love -music box.mp3",
             "audio/Yellow -Music Box.mp3",
-            "audio\Born to die-Music Box.mp3"
+            "audio/Born to die-Music Box.mp3"
         ]
 
     def load_file(self):
@@ -33,7 +33,7 @@ class AudioPlayer:
 
     def next(self):
         self.stop()
-        self.playerIndex = (self.playerIndex + 1) % 3
+        self.playerIndex = (self.playerIndex + 1) % len(self.playerQueue)
         self.load_file()
 
     def get_playing_status(self):
