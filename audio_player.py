@@ -12,7 +12,8 @@ class AudioPlayer:
         self.playerQueue = [
             "audio/Just the way you are- Music Box.mp3",
             "audio/Can't help falling in love -music box.mp3",
-            "audio/Yellow -Music Box.mp3"
+            "audio/Yellow -Music Box.mp3",
+            "audio\Born to die-Music Box.mp3"
         ]
 
     def load_file(self):
